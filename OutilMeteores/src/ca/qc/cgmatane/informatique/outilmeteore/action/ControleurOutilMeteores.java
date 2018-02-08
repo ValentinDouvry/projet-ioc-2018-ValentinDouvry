@@ -9,11 +9,18 @@ public class ControleurOutilMeteores
 {
 	protected VueOutilMeteore vue;
 	
+	/*protected int coordoneesMeteoreTest1[] = {800,150};
+	protected int coordoneesMeteoreTest2[] = {500,25};
+	protected int coordoneesMeteoreTest3[] = {70,100};
+	*/
+	
 	public ControleurOutilMeteores(VueOutilMeteore vue)
 	{
 		this.vue = vue;
-		//vue.afficherDescription(1);
-		//vue.afficherMarqueurMeteore(0,oui);
+		//vue.afficherMarqueurMeteore(1,coordoneesMeteoreTest1);
+		//vue.afficherMarqueurMeteore(2,coordoneesMeteoreTest2);
+		//vue.afficherMarqueurMeteore(3,coordoneesMeteoreTest3);
+		
 	}
 	
 	

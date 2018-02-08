@@ -1,5 +1,8 @@
 package ca.qc.cgmatane.informatique.outilmeteore.vue;
 import java.io.FileNotFoundException;
+
+import org.omg.CORBA.PRIVATE_MEMBER;
+
 import ca.qc.cgmatane.informatique.outilmeteore.action.ControleurOutilMeteores;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -52,25 +55,25 @@ public class VueOutilMeteore extends Application
 		/*----------------------------------------------------------------------------------------------*/
 		/* Construction des cercles test fixes pour les marqueurs de meteorites*/
 		this.marqueurMeteoreTest1 = new Circle();
-		marqueurMeteoreTest1.setCenterX(30f);
+		marqueurMeteoreTest1.setCenterX(800f);
 		marqueurMeteoreTest1.setCenterY(150f);
 		marqueurMeteoreTest1.setRadius(5f);
 		marqueurMeteoreTest1.setId("1");
-		marqueurMeteoreTest1.setFill(javafx.scene.paint.Color.DARKSEAGREEN);		
+		marqueurMeteoreTest1.setFill(javafx.scene.paint.Color.GREEN);		
 		
 		this.marqueurMeteoreTest2 = new Circle();
 		marqueurMeteoreTest2.setCenterX(500f);
 		marqueurMeteoreTest2.setCenterY(25f);
 		marqueurMeteoreTest2.setRadius(5f);
 		marqueurMeteoreTest2.setId("2");
-		marqueurMeteoreTest2.setFill(javafx.scene.paint.Color.DARKSEAGREEN);		
+		marqueurMeteoreTest2.setFill(javafx.scene.paint.Color.GREEN);		
 		
 		this.marqueurMeteoreTest3 = new Circle();		
 		marqueurMeteoreTest3.setCenterX(70f);
 		marqueurMeteoreTest3.setCenterY(100f);
 		marqueurMeteoreTest3.setRadius(5f);
 		marqueurMeteoreTest3.setId("3");
-		marqueurMeteoreTest3.setFill(javafx.scene.paint.Color.DARKSEAGREEN);		
+		marqueurMeteoreTest3.setFill(javafx.scene.paint.Color.GREEN);		
 		/*------------------------------------------------------------------------------------------*/
 		
 		
@@ -135,13 +138,35 @@ public class VueOutilMeteore extends Application
 
 	public void afficherMarqueurMeteore(int id,int[] coordonnees)
 	{
-		//lancer 2eme fenetre
+		
+		int coordonneeX = coordonnees[0];
+		int coordonneeY = coordonnees[1];
+		
+		if(id == 1)
+		{
+			marqueurMeteoreTest1.setCenterX(coordonneeX);
+			marqueurMeteoreTest1.setCenterY(coordonneeY);
+		}
+		else if(id == 2)
+		{
+			marqueurMeteoreTest2.setCenterX(coordonneeX);
+			marqueurMeteoreTest2.setCenterY(coordonneeY);
+		}
+		else if(id == 3)
+		{
+			marqueurMeteoreTest3.setCenterX(coordonneeX);
+			marqueurMeteoreTest3.setCenterY(coordonneeY);
+		}
+		
 	}
 	
 	public void inscrireDescriptionMeteore(int id, String texte)
+
 	{
 		
 	}
+	
+	
 	
 	public void afficherDescription(int id)
 	{

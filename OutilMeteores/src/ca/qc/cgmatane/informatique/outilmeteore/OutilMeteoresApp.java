@@ -6,8 +6,12 @@ public class OutilMeteoresApp {
 
 	public static void main(String[] parametres) 
 	{
+			
+		
 		VueOutilMeteore vueOutilMeteore = new VueOutilMeteore();
 		vueOutilMeteore.launch(VueOutilMeteore.class, parametres);
+		
+
 
 	}
 
