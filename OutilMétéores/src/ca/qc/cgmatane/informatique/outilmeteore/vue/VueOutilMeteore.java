@@ -6,7 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+
 import javax.swing.*;
+
+
+
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -17,6 +22,8 @@ public class VueOutilMeteore extends Application
 {
 
 	protected ControleurOutilMeteores controleur;
+	protected Button actionDireBonjour;
+	protected TextField penseeDuJour;
 	
 	
 	public VueOutilMeteore()
@@ -26,7 +33,24 @@ public class VueOutilMeteore extends Application
 
 	public void start(Stage scenePrincipale) 
 	{
+		actionDireBonjour = new Button();
+		actionDireBonjour.setId("boutton-Bienvenue");
+		actionDireBonjour.setText("Hi There !");		
+		actionDireBonjour.setOnAction(new EventHandler<ActionEvent>() 
+		{
+			@Override
+			public void handle(ActionEvent event) {
+				
+			}
+		});
+		penseeDuJour = new TextField();
+		StackPane racine = new StackPane();
+		racine.getChildren().add(actionDireBonjour);
+		//racine.getChildren().add(penseeDuJour);
+		Scene scene = new Scene(racine, 300, 250);
 		
+		scenePrincipale.setScene(scene);
+		scenePrincipale.show();
 	}
 	
 	
