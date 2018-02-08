@@ -48,7 +48,7 @@ public class VueOutilMeteore extends Application
 		racine.getChildren().add(actionDireBonjour);
 		//racine.getChildren().add(penseeDuJour);
 		Scene scene = new Scene(racine, 300, 250);
-		
+		scene.getStylesheets().add(VueOutilMeteore.class.getResource("decoration/OutilMeteore.css").toExternalForm());
 		scenePrincipale.setScene(scene);
 		scenePrincipale.show();
 	}
