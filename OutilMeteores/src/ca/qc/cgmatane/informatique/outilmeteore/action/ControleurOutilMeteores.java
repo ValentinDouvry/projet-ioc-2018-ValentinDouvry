@@ -1,15 +1,24 @@
 package ca.qc.cgmatane.informatique.outilmeteore.action;
 
 import ca.qc.cgmatane.informatique.outilmeteore.vue.VueOutilMeteore;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 
 public class ControleurOutilMeteores 
 {
-	protected VueOutilMeteore vueOutilMeteore;
+	protected VueOutilMeteore vue;
 	
-	public ControleurOutilMeteores(VueOutilMeteore vueOutilMeteore)
+	public ControleurOutilMeteores(VueOutilMeteore vue)
 	{
-		this.vueOutilMeteore = vueOutilMeteore;
+		this.vue = vue;
+		//vue.afficherDescription(1);
+		//vue.afficherMarqueurMeteore(0,oui);
 	}
+	
+	
+	
+	
 	
 	
 }
