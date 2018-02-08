@@ -22,8 +22,7 @@ public class VueOutilMeteore extends Application
 {
 
 	protected ControleurOutilMeteores controleur;
-	protected Button actionDireBonjour;
-	protected TextField penseeDuJour;
+
 	
 	
 	public VueOutilMeteore()
@@ -33,21 +32,9 @@ public class VueOutilMeteore extends Application
 
 	public void start(Stage scenePrincipale) 
 	{
-		actionDireBonjour = new Button();
-		actionDireBonjour.setId("boutton-Bienvenue");
-		actionDireBonjour.setText("Hi There !");		
-		actionDireBonjour.setOnAction(new EventHandler<ActionEvent>() 
-		{
-			@Override
-			public void handle(ActionEvent event) {
 				
-			}
-		});
-		penseeDuJour = new TextField();
 		StackPane racine = new StackPane();
-		racine.getChildren().add(actionDireBonjour);
-		//racine.getChildren().add(penseeDuJour);
-		Scene scene = new Scene(racine, 300, 250);
+		Scene scene = new Scene(racine, 960, 491);
 		scene.getStylesheets().add(VueOutilMeteore.class.getResource("decoration/OutilMeteore.css").toExternalForm());
 		scenePrincipale.setScene(scene);
 		scenePrincipale.show();
