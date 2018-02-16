@@ -196,7 +196,7 @@ public class VueOutilMeteore extends Application
 			@Override
 			public void handle(MouseEvent e) 
 			{
-				afficherDetailsMeteore(controleur.listeMeteore.get(id-1));
+				afficherDetailsMeteore(dao.MeteoreDaoImplementation.listeMeteores.get(id-1));
 				compteurMeteoreClique++;
 				if(compteurMeteoreClique == 3)
 				{
