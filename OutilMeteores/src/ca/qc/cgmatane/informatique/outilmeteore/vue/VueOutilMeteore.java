@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -28,18 +29,19 @@ public class VueOutilMeteore extends Application
 	protected Circle marqueurMeteoreTest3;
 	protected StackPane racine;
 	protected Stage fenetreDetailsMeteore;
+	protected Pane panneauMeteore;
+	protected Text texteDetailsMeteore;
+	protected int compteurMeteoreClique;
 	
 	
-	public VueOutilMeteore()
-	{
-		this.controleur = new ControleurOutilMeteores(this);
-	}
+	
 
 	public void start(Stage scenePrincipale) throws FileNotFoundException 
 	{
 		
 				
 		this.racine = new StackPane();
+		this.panneauMeteore = new Pane();
 		
 		/* Test marqueur en image
 		Image marqueurMeteore =  new Image(new FileInputStream("decoration/marqueurMeteore.png"));
@@ -48,15 +50,14 @@ public class VueOutilMeteore extends Application
 		marqueurMeteoreView.setY(100);
 		marqueurMeteoreView.setFitHeight();
 		marqueurMeteoreView.setWidth();
-		*/
+		*/		
+				
 		
-		
-		
-		/*----------------------------------------------------------------------------------------------*/
-		/* Construction des cercles test fixes pour les marqueurs de meteorites*/
+		/* Construction des cercles test pour les marqueurs de meteorites*/
 		this.marqueurMeteoreTest1 = new Circle();
 		marqueurMeteoreTest1.setCenterX(800f);
 		marqueurMeteoreTest1.setCenterY(150f);
+		
 		marqueurMeteoreTest1.setRadius(5f);
 		marqueurMeteoreTest1.setId("1");
 		marqueurMeteoreTest1.setFill(javafx.scene.paint.Color.GREEN);		
@@ -76,60 +77,90 @@ public class VueOutilMeteore extends Application
 		marqueurMeteoreTest3.setFill(javafx.scene.paint.Color.GREEN);		
 		/*------------------------------------------------------------------------------------------*/
 		
-		
-		TextField texte = new TextField();
+		/* Fenetre Details des meteores */
+		this.texteDetailsMeteore = new Text();
 		StackPane affichageDetails = new StackPane();
-		affichageDetails.getChildren().add(texte);
-		Scene sceneDetailsMeteore = new Scene(affichageDetails,300,300);
-		
+		affichageDetails.getChildren().add(texteDetailsMeteore);
+		Scene sceneDetailsMeteore = new Scene(affichageDetails,300,300);		
 		this.fenetreDetailsMeteore = new Stage();
 		fenetreDetailsMeteore.setTitle("Details");
 		fenetreDetailsMeteore.setScene(sceneDetailsMeteore);
 		//fenetreDetailsMeteore.show();	
+		/*-----------------------------------------------------------------------------------------------*/
 		
 		
 		Scene scene = new Scene(racine, 960, 491);
 		scene.getStylesheets().add(VueOutilMeteore.class.getResource("decoration/OutilMeteore.css").toExternalForm());
 		scenePrincipale.setScene(scene);		
 		
+		
+		/*--- Ajout Cercles meteores sur background ---*/
+		
+		panneauMeteore.getChildren().add(marqueurMeteoreTest1);
+		panneauMeteore.getChildren().add(marqueurMeteoreTest2);
+		panneauMeteore.getChildren().add(marqueurMeteoreTest3);
+		racine.getChildren().add(panneauMeteore);	
+		
+		/*---------------------------------------------------------------------------------*/
+		
+		
+		
 		/*--- Ajout EventHandler pour le clic des cercles ---*/
-				
-		racine.getChildren().add(new Pane(marqueurMeteoreTest1));
+		
+		//racine.getChildren().add(new Pane(marqueurMeteoreTest1));
 		marqueurMeteoreTest1.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() 
 		{
 			@Override
 			public void handle(javafx.scene.input.MouseEvent e) 
 			{
-				afficherDescription(Integer.parseInt(marqueurMeteoreTest1.getId()));
-				
+				afficherDetailsMeteore("Description meteore numero 1");
+				compteurMeteoreClique++;
+				if(compteurMeteoreClique == 3)
+				{
+					afficherAlerte("Les meteores proches sont : " );
+					compteurMeteoreClique = 0;
+				}
 			}
 		});		
 		
-		racine.getChildren().add(new Pane(marqueurMeteoreTest2));
+		//racine.getChildren().add(new Pane(marqueurMeteoreTest2));
 		marqueurMeteoreTest2.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() 
 		{
 			@Override
 			public void handle(javafx.scene.input.MouseEvent e) 
 			{
-				afficherDescription(Integer.parseInt(marqueurMeteoreTest2.getId()));
-				
+				afficherDetailsMeteore("Description meteore numero 2");
+				compteurMeteoreClique++;
+				if(compteurMeteoreClique == 3)
+				{
+					
+					afficherAlerte("Les meteores proches sont : " );
+					compteurMeteoreClique = 0;
+				}
 			}
 		});
 		
-		racine.getChildren().add(new Pane(marqueurMeteoreTest3));		
+		//racine.getChildren().add(new Pane(marqueurMeteoreTest3));		
 		marqueurMeteoreTest3.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() 
 		{
 			@Override
 			public void handle(javafx.scene.input.MouseEvent e) 
 			{
-				afficherDescription(Integer.parseInt(marqueurMeteoreTest3.getId()));
-				
+				afficherDetailsMeteore("Description meteore numero 3");
+				compteurMeteoreClique++;
+				if(compteurMeteoreClique == 3)
+				{
+					
+					afficherAlerte("Les meteores proches sont : " );
+					compteurMeteoreClique = 0;
+				}
 			}
 		});
 		
 		/*-------------------------------------------------------------------------------------*/
 		
 		scenePrincipale.show();
+		this.controleur = new ControleurOutilMeteores(this);
 	}
 	
 	
@@ -158,20 +189,21 @@ public class VueOutilMeteore extends Application
 			marqueurMeteoreTest3.setCenterY(coordonneeY);
 		}
 		
-	}
-	
-	public void inscrireDescriptionMeteore(int id, String texte)
-
-	{
+		
 		
 	}
 	
-	
-	
-	public void afficherDescription(int id)
+	public void afficherAlerte(String texte)
 	{
-		System.out.println(id);
+		System.out.println(texte);
+	}
+	
+	
+	
+	public void afficherDetailsMeteore(String texteDescription)
+	{
 		
+		this.texteDetailsMeteore.setText(texteDescription);
 		fenetreDetailsMeteore.show();
 		
 	}
