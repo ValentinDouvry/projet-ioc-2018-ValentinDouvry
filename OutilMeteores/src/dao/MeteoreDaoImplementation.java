@@ -68,7 +68,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				Element elementNom = (Element)noeudNom;
 				String nom = elementNom.getTextContent();
 				
-				Node noeudId = elementMeteore.getElementsByTagName("Id").item(0);
+				Node noeudId = elementMeteore.getElementsByTagName("id").item(0);
 				Element elementId = (Element)noeudId;
 				int id = Integer.parseInt(elementId.getTextContent());
 				
