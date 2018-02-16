@@ -14,6 +14,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -54,8 +56,47 @@ public class MeteoreDaoImplementation implements MeteoresDao
 			Document docListeMeteore = parseur.parse(new StringBufferInputStream(xmlMeteores));
 			String racine = docListeMeteore.getDocumentElement().getNodeName();
 			
-			NodeList noeudListeMeteore = docListeMeteore.getElementsByTagName("name");
-					
+			NodeList noeudListeMeteore = docListeMeteore.getElementsByTagName("row");
+			
+			for(int position = 0; position < noeudListeMeteore.getLength(); position++)
+			{
+				Node noeudMeteore = noeudListeMeteore.item(position);
+				Element elementMeteore = (Element)noeudMeteore;
+				
+				Node noeudNom = elementMeteore.getElementsByTagName("name").item(0);
+				Element elementNom = (Element)noeudNom;
+				String nom = elementNom.getTextContent();
+				
+				Node noeudId = elementMeteore.getElementsByTagName("Id").item(0);
+				Element elementId = (Element)noeudId;
+				int id = Integer.parseInt(elementId.getTextContent());
+				
+				Node noeudAnnee = elementMeteore.getElementsByTagName("year").item(0);
+				Element elementAnnee = (Element)noeudAnnee;
+				int annee = Integer.parseInt(elementAnnee.getTextContent());
+				
+				Node noeudMasse = elementMeteore.getElementsByTagName("mass").item(0);
+				Element elementMasse = (Element)noeudMasse;
+				int masse = Integer.parseInt(elementMasse.getTextContent());				
+				
+				Node noeudCoordonneesX = elementMeteore.getElementsByTagName("reclat").item(0);
+				Element elementCoordonneesX = (Element)noeudCoordonneesX;
+				int coordonneesX = Integer.parseInt(elementCoordonneesX.getTextContent());
+				
+				Node noeudCoordonneesY = elementMeteore.getElementsByTagName("reclong").item(0);
+				Element elementCoordonneesY = (Element)noeudCoordonneesY;
+				int coordonneesY = Integer.parseInt(elementCoordonneesY.getTextContent());
+				
+				int[] coordonnees = {0,0};
+				coordonnees[0] = coordonneesX;
+				coordonnees[1] = coordonneesX;				
+				
+				Meteore meteore = new Meteore(coordonnees, id, masse, nom, annee);
+				listeMeteores.add(meteore);
+				
+				
+			}
+			
 					
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
