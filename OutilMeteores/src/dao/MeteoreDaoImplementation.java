@@ -145,37 +145,66 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				Element elementNom = (Element)noeudNom;
 				String nom = elementNom.getTextContent();
 				
-				Node noeudId = elementMeteore.getElementsByTagName("id").item(0);
+				/*Node noeudId = elementMeteore.getElementsByTagName("id").item(0);
 				Element elementId = (Element)noeudId;
-				//int id = Integer.parseInt(elementId.getTextContent());
+				int id = Integer.parseInt(elementId.getTextContent());*/
 				
 				Node noeudAnnee = elementMeteore.getElementsByTagName("year").item(0);
 				Element elementAnnee = (Element)noeudAnnee;
 				//int annee = Integer.parseInt(elementAnnee.getTextContent());
 				int annee = 10;
 				
+				float masse;
 				Node noeudMasse = elementMeteore.getElementsByTagName("mass").item(0);
 				Element elementMasse = (Element)noeudMasse;
-				//int masse = Integer.parseInt(elementMasse.getTextContent());
-				int masse = 100;
+				if(elementMasse != null)
+				{
+					 masse = Float.parseFloat(elementMasse.getTextContent());
+				}
+				else
+				{
+					masse = 0;
+				}
+				
+							
 				
 				Node noeudCoordonneesX = elementMeteore.getElementsByTagName("reclat").item(0);
 				Element elementCoordonneesX = (Element)noeudCoordonneesX;
-				//int coordonneesX = Integer.parseInt(elementCoordonneesX.getTextContent());
-				int coordonneesX = 100;
+				float coordonneesX;
 				
+				if(elementCoordonneesX !=null)
+				{
+					coordonneesX = Float.parseFloat(elementCoordonneesX.getTextContent());
+				}
+				else
+				{
+					coordonneesX = -9999;
+				}				
+				
+				float coordonneesY;
 				Node noeudCoordonneesY = elementMeteore.getElementsByTagName("reclong").item(0);
 				Element elementCoordonneesY = (Element)noeudCoordonneesY;
-				//int coordonneesY = Integer.parseInt(elementCoordonneesY.getTextContent());
-				int coordonneesY = 300;
 				
-				int[] coordonnees = {0,0};
+				if(elementCoordonneesY !=null)
+				{
+					coordonneesY = Float.parseFloat(elementCoordonneesY.getTextContent());
+				}
+				else 
+				{
+					coordonneesY = -9999;	
+				}				
+				
+				float[] coordonnees = {0,0};
 				coordonnees[0] = coordonneesX;
-				coordonnees[1] = coordonneesX;				
+				coordonnees[1] = coordonneesX;		
+				
 				
 				Meteore meteore = new Meteore(coordonnees, id, masse, nom, annee);
-				listeMeteores.add(meteore);
-				id++;
+				if(coordonneesX != -9999 && coordonneesY != -9999 && masse != 0)
+				{
+					listeMeteores.add(meteore);
+					id++;
+				}					
 			
 			}
 		}

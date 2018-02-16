@@ -179,10 +179,10 @@ public class VueOutilMeteore extends Application
 	
 	
 
-	public void afficherMarqueurMeteore(int id, int[] coordonnees)
+	public void afficherMarqueurMeteore(int id, float[] coordonnees)
 	{
-		int coordonneeX = coordonnees[0];
-		int coordonneeY = coordonnees[1];
+		float coordonneeX = coordonnees[0];
+		float coordonneeY = coordonnees[1];
 		
 		
 		Circle marqueurMeteoreTest = new Circle();
