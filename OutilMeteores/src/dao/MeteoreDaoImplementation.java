@@ -49,9 +49,10 @@ public class MeteoreDaoImplementation implements MeteoresDao
 		catch (MalformedURLException e) { e.printStackTrace();} 
 		catch (IOException e) { e.printStackTrace(); }
 		
-		DocumentBuilder parseur;
+		
 		
 		try {
+			DocumentBuilder parseur;
 			parseur = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			Document docListeMeteore = parseur.parse(new StringBufferInputStream(xmlMeteores));
 			String racine = docListeMeteore.getDocumentElement().getNodeName();
