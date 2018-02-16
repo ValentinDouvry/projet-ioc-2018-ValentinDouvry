@@ -5,7 +5,21 @@ public class Meteore
 	private int[] coordonnees;
 	private int id;
 	private String description;
+	private int masse;
+	private String nom = "";
+	private int annee;
 	
+	
+	public Meteore(int[] coordonnees, int id, int masse, String nom,int annee)
+	{
+		this.coordonnees = coordonnees;
+		this.id = id;
+		this.masse = masse;
+		this.nom = nom;
+		this.description = ("Nom : " + nom  + " \nMasse : " + masse + "g" + "\nAnnee : " + annee + "\nCoordonnees :  " + "{" + coordonnees[0] + ";" + coordonnees[1] + "}" );
+		
+		
+	}
 	
 	public int[] getCoordonnees() {
 		return coordonnees;
@@ -24,6 +38,30 @@ public class Meteore
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public int getMasse() {
+		return masse;
+	}
+
+	public void setMasse(int masse) {
+		this.masse = masse;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public int getAnnee() {
+		return annee;
+	}
+
+	public void setAnnee(int annee) {
+		this.annee = annee;
 	}
 	
 	

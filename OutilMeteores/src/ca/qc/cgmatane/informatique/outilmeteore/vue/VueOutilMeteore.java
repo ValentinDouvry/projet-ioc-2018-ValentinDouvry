@@ -98,7 +98,7 @@ public class VueOutilMeteore extends Application
 		/*-----------------------------------------------------------------------------------------------*/
 		
 		
-		Scene scene = new Scene(racine, 945, 480);
+		Scene scene = new Scene(racine, 1270, 675);
 		scene.getStylesheets().add(VueOutilMeteore.class.getResource("decoration/OutilMeteore.css").toExternalForm());
 		scenePrincipale.setScene(scene);
 		scenePrincipale.setResizable(false);
@@ -130,7 +130,7 @@ public class VueOutilMeteore extends Application
 				if(compteurMeteoreClique == 3)
 				{
 					afficherAlerte("Les meteores proches sont : " );
-					compteurMeteoreClique = 0;
+					compteurMeteoreClique 0= 0;
 				}
 			}
 		});*/		
@@ -196,7 +196,7 @@ public class VueOutilMeteore extends Application
 			@Override
 			public void handle(MouseEvent e) 
 			{
-				afficherDetailsMeteore(controleur.listeMeteore.get(id));
+				afficherDetailsMeteore(controleur.listeMeteore.get(id-1));
 				compteurMeteoreClique++;
 				if(compteurMeteoreClique == 3)
 				{

@@ -34,17 +34,17 @@ public class ControleurOutilMeteores
 	{
 		this.vue = vue;
 				
-		meteoreTest1 = new Meteore();
-		meteoreTest2 = new Meteore();
-		meteoreTest3 = new Meteore();
-		meteoreTest4 = new Meteore();
-		meteoreTest5 = new Meteore();
-		meteoreTest6 = new Meteore();
-		meteoreTest7 = new Meteore();
+		meteoreTest1 = new Meteore(new int[] {600,150},1, 300, "Roger", 1987);
+		meteoreTest2 = new Meteore(new int[] {500,25},2, 100, "Joseph", 1952);
+		meteoreTest3 = new Meteore(new int[] {70,100},3, 315, "Philipe", 2017);
+		meteoreTest4 = new Meteore(new int[] {234,37},4, 800, "Michel", 2004);
+		meteoreTest5 = new Meteore(new int[] {100,67},5, 9000, "Mario", 1995);
+		meteoreTest6 = new Meteore(new int[] {511,169},6, 462, "Jean-Yves", 1847);
+		meteoreTest7 = new Meteore(new int[] {399,255},7, 1397, "Jesus", 1963);
 		
 		listeMeteore = new ArrayList<Meteore>();
 		
-		meteoreTest1.setId(0);
+		/*meteoreTest1.setId(0);
 		meteoreTest1.setCoordonnees(new int[] {600,150});
 		meteoreTest1.setDescription("Description du meteore numero 1");		
 		
@@ -70,7 +70,7 @@ public class ControleurOutilMeteores
 		
 		meteoreTest7.setId(6);
 		meteoreTest7.setCoordonnees(new int[] {399,255});
-		meteoreTest7.setDescription("Description du meteore numero 7");
+		meteoreTest7.setDescription("Description du meteore numero 7");*/
 		
 		listeMeteore.add(meteoreTest1);
 		listeMeteore.add(meteoreTest2);
