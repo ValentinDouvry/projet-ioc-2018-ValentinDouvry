@@ -93,6 +93,8 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				if(elementPosition != null)
 				{
 					positionMeteore = elementPosition.getTextContent();
+					positionMeteore = positionMeteore.replace("POINT ", "");
+					positionMeteore = positionMeteore.replace(" ", " ; ");
 				}
 				else
 				{

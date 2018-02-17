@@ -42,14 +42,11 @@ public class VueOutilMeteore extends Application
 	protected Pane panneauMeteore;
 	protected Text texteDetailsMeteore;
 	protected int compteurMeteoreClique;
-	protected List<Circle> listMarqueursMeteore;
-	
-	
+	protected List<Circle> listMarqueursMeteore;	
 	
 
 	public void start(Stage scenePrincipale) throws FileNotFoundException 
-	{
-		
+	{		
 				
 		this.racine = new StackPane();
 		this.panneauMeteore = new Pane();
