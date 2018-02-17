@@ -7,18 +7,18 @@ public class Meteore
 	private String description;
 	private float masse;
 	private String nom = "";
-	private int annee;
+	private String annee;
+	private String positionMeteore;
 	
 	
-	public Meteore(float[] coordonnees, int id, float masse, String nom,int annee)
+	public Meteore(float[] coordonnees, int id, float masse, String nom,String annee, String positionMeteore)
 	{
 		this.coordonnees = coordonnees;
 		this.id = id;
 		this.masse = masse;
 		this.nom = nom;
-		this.description = ("Nom : " + nom  + " \nMasse : " + masse + "g" + "\nAnnee : " + annee + "\nCoordonnees :  " + "{" + coordonnees[0] + ";" + coordonnees[1] + "}" );
-		
-		
+		this.description = ("Nom : " + nom  + " \nMasse : " + masse + "g" + "\nDate : " + annee + "\nCoordonnees :  " + positionMeteore );
+				
 	}
 	
 	public float[] getCoordonnees() {
@@ -56,12 +56,20 @@ public class Meteore
 		this.nom = nom;
 	}
 
-	public int getAnnee() {
+	public String getAnnee() {
 		return annee;
 	}
 
-	public void setAnnee(int annee) {
+	public void setAnnee(String annee) {
 		this.annee = annee;
+	}
+
+	public String getPositionMeteore() {
+		return positionMeteore;
+	}
+
+	public void setPositionMeteore(String positionMeteore) {
+		this.positionMeteore = positionMeteore;
 	}
 	
 	

@@ -17,7 +17,8 @@ public class ControleurOutilMeteores
 {
 	protected VueOutilMeteore vue;
 	
-	public List<Meteore> listeMeteore;	
+	public List<Meteore> listeMeteore;
+	protected int compteurMeteoreClique;
 	
 	
 	public ControleurOutilMeteores(VueOutilMeteore vue)
@@ -29,8 +30,10 @@ public class ControleurOutilMeteores
 		
 		for (Meteore meteore : meteoresDao.recupererTouteLesMeteores())
 		{
-			vue.afficherMarqueurMeteore(meteore.getId(),meteore.getCoordonnees());
+			vue.afficherMarqueurMeteore(meteore.getId(),meteore.getCoordonnees());			
 		}
+		
+		compteurMeteoreClique = 0;
 		
 		/*Iterator<Meteore> visiteurMeteore = listeMeteore.iterator();
 		while(visiteurMeteore.hasNext())
@@ -38,14 +41,19 @@ public class ControleurOutilMeteores
 			Meteore meteoreTest = visiteurMeteore.next();
 			vue.afficherMarqueurMeteore(meteoreTest.getId(),meteoreTest.getCoordonnees());
 			
-		}*/
-		
-		
-		
-		
+		}*/		
 	}
 	
-	
+	public void clicMeteore(int id)
+	{
+		vue.afficherDetailsMeteore(dao.MeteoreDaoImplementation.listeMeteores.get(id-1));
+		compteurMeteoreClique++;
+		if(compteurMeteoreClique == 3)
+		{
+			vue.afficherAlerte("Les meteores proches sont : " );
+			compteurMeteoreClique = 0;
+		}
+	}
 	
 	
 	

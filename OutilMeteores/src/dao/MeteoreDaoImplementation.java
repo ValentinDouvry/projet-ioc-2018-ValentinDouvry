@@ -36,8 +36,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 	
 	public MeteoreDaoImplementation() 
 	{
-		listeMeteores = new ArrayList<Meteore>();
-		
+		listeMeteores = new ArrayList<Meteore>();		
 	}
 	
 	
@@ -88,14 +87,36 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				Element elementNom = (Element)noeudNom;
 				String nom = elementNom.getTextContent();
 				
+				String positionMeteore;
+				Node noeudPosition = elementMeteore.getElementsByTagName("geolocation").item(0);
+				Element elementPosition = (Element)noeudPosition;
+				if(elementPosition != null)
+				{
+					positionMeteore = elementPosition.getTextContent();
+				}
+				else
+				{
+					positionMeteore = "Inconnue";
+				}	
+				
+				
 				/*Node noeudId = elementMeteore.getElementsByTagName("id").item(0);
 				Element elementId = (Element)noeudId;
 				int id = Integer.parseInt(elementId.getTextContent());*/
 				
+				String annee;
 				Node noeudAnnee = elementMeteore.getElementsByTagName("year").item(0);
 				Element elementAnnee = (Element)noeudAnnee;
-				//int annee = Integer.parseInt(elementAnnee.getTextContent());
-				int annee = 10;
+				if(elementAnnee != null)
+				{
+					annee = elementAnnee.getTextContent();
+				}
+				else 
+				{
+					annee = "Inconnue";
+				}
+				
+				
 				
 				float masse;
 				Node noeudMasse = elementMeteore.getElementsByTagName("mass").item(0);
@@ -163,7 +184,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				coordonnees[1] = y;
 				/*-------------------------------------------------------------------------------------*/
 				
-				Meteore meteore = new Meteore(coordonnees, id, masse, nom, annee);
+				Meteore meteore = new Meteore(coordonnees, id, masse, nom, annee, positionMeteore);
 				if(coordonneesX != -9999 && coordonneesY != -9999 && masse != 0)
 				{
 					listeMeteores.add(meteore);

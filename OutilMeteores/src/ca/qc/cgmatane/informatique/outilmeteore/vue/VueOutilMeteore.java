@@ -95,31 +95,17 @@ public class VueOutilMeteore extends Application
 			@Override
 			public void handle(MouseEvent e) 
 			{
-				afficherDetailsMeteore(dao.MeteoreDaoImplementation.listeMeteores.get(id-1));
-				compteurMeteoreClique++;
-				if(compteurMeteoreClique == 3)
-				{
-					afficherAlerte("Les meteores proches sont : " );
-					compteurMeteoreClique = 0;
-				}
+				controleur.clicMeteore(id);
 			}
 		});
-		this.listMarqueursMeteore.add(marqueurMeteoreTest);
-		
-		
-		
-		this.panneauMeteore.getChildren().add(marqueurMeteoreTest);
-		//this.racine.getChildren().add(panneauMeteore);
-		
-		
+		this.listMarqueursMeteore.add(marqueurMeteoreTest);		
+		this.panneauMeteore.getChildren().add(marqueurMeteoreTest);		
 	}
 	
 	public void afficherAlerte(String texte)
 	{
 		System.out.println(texte);
-	}
-	
-	
+	}	
 	
 	public void afficherDetailsMeteore(Meteore meteore)
 	{
