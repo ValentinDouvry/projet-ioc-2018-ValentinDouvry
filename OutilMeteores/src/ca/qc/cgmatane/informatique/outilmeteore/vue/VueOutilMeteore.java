@@ -16,6 +16,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -53,13 +56,17 @@ public class VueOutilMeteore extends Application
 		this.listMarqueursMeteore = new ArrayList<Circle>();
 		
 		/* Fenetre Details des meteores */
-		this.texteDetailsMeteore = new Text();
+		this.texteDetailsMeteore = new Text(); //Texte description meteore
+		this.texteDetailsMeteore.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+		this.texteDetailsMeteore.setFill(Color.YELLOW);
 		StackPane affichageDetails = new StackPane();
 		affichageDetails.getChildren().add(texteDetailsMeteore);
-		Scene sceneDetailsMeteore = new Scene(affichageDetails,300,300);		
+		Scene sceneDetailsMeteore = new Scene(affichageDetails,400,400);
 		this.fenetreDetailsMeteore = new Stage();
+		fenetreDetailsMeteore.setResizable(false);
 		fenetreDetailsMeteore.setTitle("Details");
 		fenetreDetailsMeteore.setScene(sceneDetailsMeteore);
+		sceneDetailsMeteore.getStylesheets().add(VueOutilMeteore.class.getResource("decoration/fenetreDetails.css").toExternalForm());
 		//fenetreDetailsMeteore.show();	
 		/*-----------------------------------------------------------------------------------------------*/
 		
