@@ -1,6 +1,7 @@
 package dao;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -43,7 +44,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 	@Override
 	public List<Meteore> recupererTouteLesMeteores() 
 	{
-		/*String xmlMeteores = "";
+		String xmlMeteores = "";
 		URL urlDataNasa;
 		try 
 		{
@@ -54,84 +55,26 @@ public class MeteoreDaoImplementation implements MeteoresDao
 			influx.close();
 		} 
 		catch (MalformedURLException e) { e.printStackTrace();} 
-		catch (IOException e) { e.printStackTrace(); }*/
+		catch (IOException e) { e.printStackTrace(); }	
 		
-		
-		
-		/*try {
-			DocumentBuilder parseur;
-			parseur = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document docListeMeteore = parseur.parse(new StringBufferInputStream(xmlMeteores));
-			String racine = docListeMeteore.getDocumentElement().getNodeName();
-			
-			NodeList noeudListeMeteore = docListeMeteore.getElementsByTagName("row");
-			
-			for(int position = 0; position < noeudListeMeteore.getLength(); position++)
-			{
-				Node noeudMeteore = noeudListeMeteore.item(position);
-				Element elementMeteore = (Element)noeudMeteore;
-				
-				Node noeudNom = elementMeteore.getElementsByTagName("name").item(0);
-				Element elementNom = (Element)noeudNom;
-				String nom = elementNom.getTextContent();
-				
-				Node noeudId = elementMeteore.getElementsByTagName("id").item(0);
-				Element elementId = (Element)noeudId;
-				int id = Integer.parseInt(elementId.getTextContent());
-				
-				Node noeudAnnee = elementMeteore.getElementsByTagName("year").item(0);
-				Element elementAnnee = (Element)noeudAnnee;
-				int annee = Integer.parseInt(elementAnnee.getTextContent());
-				
-				Node noeudMasse = elementMeteore.getElementsByTagName("mass").item(0);
-				Element elementMasse = (Element)noeudMasse;
-				int masse = Integer.parseInt(elementMasse.getTextContent());				
-				
-				Node noeudCoordonneesX = elementMeteore.getElementsByTagName("reclat").item(0);
-				Element elementCoordonneesX = (Element)noeudCoordonneesX;
-				int coordonneesX = Integer.parseInt(elementCoordonneesX.getTextContent());
-				
-				Node noeudCoordonneesY = elementMeteore.getElementsByTagName("reclong").item(0);
-				Element elementCoordonneesY = (Element)noeudCoordonneesY;
-				int coordonneesY = Integer.parseInt(elementCoordonneesY.getTextContent());
-				
-				int[] coordonnees = {0,0};
-				coordonnees[0] = coordonneesX;
-				coordonnees[1] = coordonneesX;				
-				
-				Meteore meteore = new Meteore(coordonnees, id, masse, nom, annee);
-				listeMeteores.add(meteore);
-				
-				
-			}
-			
-					
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
-		
+		xmlMeteores = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>" + xmlMeteores;
+		System.out.println(xmlMeteores);
 		try 
 		{
 			int id = 0;
 			
-			File file = new File("c:\\file-utf.xml");
+			/*--- Test depuis fichier XML sur le disque ---*/
+			/*File file = new File("c:\\file-utf.xml");
 			InputStream inputStream;
 			Reader reader;
 			inputStream = new FileInputStream(file);
 			reader = new InputStreamReader(inputStream,"UTF-8");
-			InputSource is = new InputSource(reader);
+			InputSource is = new InputSource(reader);*/
+			/*---------------------------------------------------------------*/
 			
 			DocumentBuilder parseur;
 			parseur = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document docListeMeteore = parseur.parse(is);
+			Document docListeMeteore = parseur.parse(new ByteArrayInputStream(xmlMeteores.getBytes()));
 			String racine = docListeMeteore.getDocumentElement().getNodeName();
 			
 			NodeList noeudListeMeteore = docListeMeteore.getElementsByTagName("row");
@@ -164,9 +107,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				else
 				{
 					masse = 0;
-				}
-				
-							
+				}							
 				
 				Node noeudCoordonneesX = elementMeteore.getElementsByTagName("reclat").item(0);
 				Element elementCoordonneesX = (Element)noeudCoordonneesX;
@@ -194,10 +135,33 @@ public class MeteoreDaoImplementation implements MeteoresDao
 					coordonneesY = -9999;	
 				}				
 				
+				/*--- Ajustement coordonnees par rapport a l'image---*/
 				float[] coordonnees = {0,0};
-				coordonnees[0] = coordonneesX;
-				coordonnees[1] = coordonneesX;		
+				/*coordonnees[0] = coordonneesX;
+				coordonnees[1] = coordonneesY;*/
 				
+				float a = coordonneesY;
+				float b = (float) Math.tan(coordonneesX);
+				
+				float minA = -180;
+				float minB = 0;
+				float maxA = 180;
+				float maxB = 90;
+				
+				float h = 591;
+				float w = 500;
+				
+				float s_a = w /(maxA - minA);
+				float o_a = -w * minA / (maxA - minA);
+				float s_b = -h / (maxB - minB);
+				float o_b = h * maxB / (maxB - minB);
+				
+				float x = s_a * a + o_a;
+				float y = s_b * b + o_b;
+				
+				coordonnees[0] = x;
+				coordonnees[1] = y;
+				/*-------------------------------------------------------------------------------------*/
 				
 				Meteore meteore = new Meteore(coordonnees, id, masse, nom, annee);
 				if(coordonneesX != -9999 && coordonneesY != -9999 && masse != 0)

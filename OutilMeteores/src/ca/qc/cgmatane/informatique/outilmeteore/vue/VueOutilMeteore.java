@@ -52,40 +52,6 @@ public class VueOutilMeteore extends Application
 		this.panneauMeteore = new Pane();
 		this.listMarqueursMeteore = new ArrayList<Circle>();
 		
-		/* Test marqueur en image
-		Image marqueurMeteore =  new Image(new FileInputStream("decoration/marqueurMeteore.png"));
-		ImageView marqueurMeteoreView = new ImageView(marqueurMeteore);
-		marqueurMeteoreView.setX(200);
-		marqueurMeteoreView.setY(100);
-		marqueurMeteoreView.setFitHeight();
-		marqueurMeteoreView.setWidth();
-		*/		
-				
-		
-		/* Construction des cercles test pour les marqueurs de meteorites*/
-		/*this.marqueurMeteoreTest1 = new Circle();
-		marqueurMeteoreTest1.setCenterX(800f);
-		marqueurMeteoreTest1.setCenterY(150f);
-		
-		marqueurMeteoreTest1.setRadius(5f);
-		marqueurMeteoreTest1.setId("1");
-		marqueurMeteoreTest1.setFill(Color.GREEN);		
-		
-		this.marqueurMeteoreTest2 = new Circle();
-		marqueurMeteoreTest2.setCenterX(500f);
-		marqueurMeteoreTest2.setCenterY(25f);
-		marqueurMeteoreTest2.setRadius(5f);
-		marqueurMeteoreTest2.setId("2");
-		marqueurMeteoreTest2.setFill(Color.GREEN);		
-		
-		this.marqueurMeteoreTest3 = new Circle();		
-		marqueurMeteoreTest3.setCenterX(70f);
-		marqueurMeteoreTest3.setCenterY(100f);
-		marqueurMeteoreTest3.setRadius(5f);
-		marqueurMeteoreTest3.setId("3");
-		marqueurMeteoreTest3.setFill(Color.GREEN);*/
-		/*------------------------------------------------------------------------------------------*/
-		
 		/* Fenetre Details des meteores */
 		this.texteDetailsMeteore = new Text();
 		StackPane affichageDetails = new StackPane();
@@ -98,86 +64,19 @@ public class VueOutilMeteore extends Application
 		/*-----------------------------------------------------------------------------------------------*/
 		
 		
-		Scene scene = new Scene(racine, 1270, 675);
+		Scene scene = new Scene(racine, 591, 500);
 		scene.getStylesheets().add(VueOutilMeteore.class.getResource("decoration/OutilMeteore.css").toExternalForm());
 		scenePrincipale.setScene(scene);
 		scenePrincipale.setResizable(false);
 		
 		
 		/*--- Ajout Cercles meteores sur background ---*/
+		racine.getChildren().add(panneauMeteore);	
 		
-		/*panneauMeteore.getChildren().add(marqueurMeteoreTest1);
-		panneauMeteore.getChildren().add(marqueurMeteoreTest2);
-		panneauMeteore.getChildren().add(marqueurMeteoreTest3);*/
-		racine.getChildren().add(panneauMeteore);
-		
-		
-		
-		/*---------------------------------------------------------------------------------*/
-		
-		
-		
-		/*--- Ajout EventHandler pour le clic des cercles ---*/
-		
-		//racine.getChildren().add(new Pane(marqueurMeteoreTest1));
-		/*marqueurMeteoreTest1.setOnMouseClicked(new EventHandler<MouseEvent>() 
-		{
-			@Override
-			public void handle(MouseEvent e) 
-			{
-				//afficherDetailsMeteore();
-				compteurMeteoreClique++;
-				if(compteurMeteoreClique == 3)
-				{
-					afficherAlerte("Les meteores proches sont : " );
-					compteurMeteoreClique 0= 0;
-				}
-			}
-		});*/		
-		
-		//racine.getChildren().add(new Pane(marqueurMeteoreTest2));
-		/*marqueurMeteoreTest2.setOnMouseClicked(new EventHandler<MouseEvent>() 
-		{
-			@Override
-			public void handle(MouseEvent e) 
-			{
-				//afficherDetailsMeteore();
-				compteurMeteoreClique++;
-				if(compteurMeteoreClique == 3)
-				{
-					
-					afficherAlerte("Les meteores proches sont : " );
-					compteurMeteoreClique = 0;
-				}
-			}
-		});*/
-		
-		//racine.getChildren().add(new Pane(marqueurMeteoreTest3));		
-		/*marqueurMeteoreTest3.setOnMouseClicked(new EventHandler<MouseEvent>() 
-		{
-			@Override
-			public void handle(MouseEvent e) 
-			{
-				//afficherDetailsMeteore();
-				compteurMeteoreClique++;
-				if(compteurMeteoreClique == 3)
-				{
-					
-					afficherAlerte("Les meteores proches sont : " );
-					compteurMeteoreClique = 0;
-				}
-			}
-		});*/
-		
-		/*-------------------------------------------------------------------------------------*/
 		
 		scenePrincipale.show();
 		this.controleur = new ControleurOutilMeteores(this);
-	}
-	
-	
-	
-	
+	}	
 
 	public void afficherMarqueurMeteore(int id, float[] coordonnees)
 	{
