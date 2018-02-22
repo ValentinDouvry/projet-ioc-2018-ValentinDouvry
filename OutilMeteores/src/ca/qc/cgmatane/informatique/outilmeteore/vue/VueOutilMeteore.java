@@ -58,7 +58,7 @@ public class VueOutilMeteore extends Application
 		this.texteDetailsMeteore.setFill(Color.YELLOW);
 		StackPane affichageDetails = new StackPane();
 		affichageDetails.getChildren().add(texteDetailsMeteore);
-		Scene sceneDetailsMeteore = new Scene(affichageDetails,400,400);
+		Scene sceneDetailsMeteore = new Scene(affichageDetails,300,300);
 		this.fenetreDetailsMeteore = new Stage();
 		fenetreDetailsMeteore.setResizable(false);
 		fenetreDetailsMeteore.setTitle("Details");
