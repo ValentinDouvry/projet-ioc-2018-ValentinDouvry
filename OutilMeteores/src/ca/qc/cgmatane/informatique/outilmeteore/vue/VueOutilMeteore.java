@@ -88,13 +88,13 @@ public class VueOutilMeteore extends Application
 		float coordonneeY = coordonnees[1];
 		
 		
-		Circle marqueurMeteoreTest = new Circle();
-		marqueurMeteoreTest.setCenterX(coordonneeX);
-		marqueurMeteoreTest.setCenterY(coordonneeY);		
-		marqueurMeteoreTest.setRadius(3.5f);
-		marqueurMeteoreTest.setId(Integer.toString(id));
-		marqueurMeteoreTest.setFill(Color.RED);
-		marqueurMeteoreTest.setOnMouseClicked(new EventHandler<MouseEvent>() 
+		Circle marqueurMeteore = new Circle();
+		marqueurMeteore.setCenterX(coordonneeX);
+		marqueurMeteore.setCenterY(coordonneeY);		
+		marqueurMeteore.setRadius(3.5f);
+		marqueurMeteore.setId(Integer.toString(id));
+		marqueurMeteore.setFill(Color.RED);
+		marqueurMeteore.setOnMouseClicked(new EventHandler<MouseEvent>() 
 		{
 			@Override
 			public void handle(MouseEvent e) 
@@ -102,8 +102,8 @@ public class VueOutilMeteore extends Application
 				controleur.clicMeteore(id);
 			}
 		});
-		this.listMarqueursMeteore.add(marqueurMeteoreTest);		
-		this.panneauMeteore.getChildren().add(marqueurMeteoreTest);		
+		this.listMarqueursMeteore.add(marqueurMeteore);		
+		this.panneauMeteore.getChildren().add(marqueurMeteore);		
 	}
 	
 	public void afficherAlerte(String texte)

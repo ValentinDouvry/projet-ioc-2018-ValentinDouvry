@@ -19,16 +19,15 @@ public class ControleurOutilMeteores
 	
 	public List<Meteore> listeMeteore;
 	protected int compteurMeteoreClique;
+	protected MeteoreDaoImplementation meteoreDaoImplementation;
 	
 	
 	public ControleurOutilMeteores(VueOutilMeteore vue)
 	{
 		this.vue = vue;
-		MeteoresDao meteoresDao = new MeteoreDaoImplementation();
+		meteoreDaoImplementation = new MeteoreDaoImplementation();		
 		
-		listeMeteore = new ArrayList<Meteore>();		
-		
-		for (Meteore meteore : meteoresDao.recupererTouteLesMeteores())
+		for (Meteore meteore : meteoreDaoImplementation.recupererTouteLesMeteores())
 		{
 			vue.afficherMarqueurMeteore(meteore.getId(),meteore.getCoordonnees());			
 		}
@@ -46,7 +45,8 @@ public class ControleurOutilMeteores
 	
 	public void clicMeteore(int id)
 	{
-		vue.afficherDetailsMeteore(dao.MeteoreDaoImplementation.listeMeteores.get(id-1));
+		
+		vue.afficherDetailsMeteore(meteoreDaoImplementation.recupererTouteLesMeteores().get(id-1));
 		compteurMeteoreClique++;
 		if(compteurMeteoreClique == 3)
 		{

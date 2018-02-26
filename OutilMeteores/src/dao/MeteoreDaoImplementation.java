@@ -31,7 +31,7 @@ import ca.qc.cgmatane.informatique.outilmeteore.Meteore;
 
 public class MeteoreDaoImplementation implements MeteoresDao
 {
-	public static List<Meteore> listeMeteores;
+	protected List<Meteore> listeMeteores;
 
 	
 	public MeteoreDaoImplementation() 
@@ -57,7 +57,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 		catch (IOException e) { e.printStackTrace(); }	
 		
 		xmlMeteores = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>" + xmlMeteores;
-		System.out.println(xmlMeteores);
+		//System.out.println(xmlMeteores);
 		try 
 		{
 			int id = 0;
