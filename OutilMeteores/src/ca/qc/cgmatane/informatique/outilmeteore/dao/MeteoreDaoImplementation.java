@@ -75,16 +75,17 @@ public class MeteoreDaoImplementation implements MeteoresDao
 			
 			DocumentBuilder parseur;
 			parseur = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document docListeMeteore = parseur.parse(new ByteArrayInputStream(xmlMeteores.getBytes()));
-			String racine = docListeMeteore.getDocumentElement().getNodeName();
-			
+			Document docListeMeteore = parseur.parse(new ByteArrayInputStream(xmlMeteores.getBytes()));			
 			NodeList noeudListeMeteore = docListeMeteore.getElementsByTagName("row");
+			
 			
 			for(int position = 0; position < noeudListeMeteore.getLength(); position++)
 			{
 				Node noeudMeteore = noeudListeMeteore.item(position);
 				Element elementMeteore = (Element)noeudMeteore;
 				
+				/*-------------------------------------------------------------------------------------------------*/
+				/*Recuperation parametres meteores depuis XML*/
 				Node noeudNom = elementMeteore.getElementsByTagName("name").item(0);
 				Element elementNom = (Element)noeudNom;
 				String nom = elementNom.getTextContent();
@@ -157,6 +158,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				{
 					coordonneesY = -9999;	
 				}				
+				/*-------------------------------------------------------------------------------------------------*/
 				
 				/*--- Ajustement coordonnees par rapport a l'image---*/
 				float[] coordonnees = {0,0};
@@ -185,7 +187,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				coordonnees[0] = x;
 				coordonnees[1] = y;
 				/*-------------------------------------------------------------------------------------*/
-				
+				/*Creation meteores et ajout au Hash*/
 				Meteore meteore = new Meteore(coordonnees, id, masse, nom, annee, positionMeteore);
 			
 				if(coordonneesX != -9999 && coordonneesY != -9999 && masse != 0)
