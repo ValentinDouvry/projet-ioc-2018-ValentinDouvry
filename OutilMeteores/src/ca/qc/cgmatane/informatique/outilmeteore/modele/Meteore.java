@@ -54,24 +54,4 @@ public class Meteore
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
-	public String getAnnee() {
-		return annee;
-	}
-
-	public void setAnnee(String annee) {
-		this.annee = annee;
-	}
-
-	public String getPositionMeteore() {
-		return positionMeteore;
-	}
-
-	public void setPositionMeteore(String positionMeteore) {
-		this.positionMeteore = positionMeteore;
-	}
-	
-	
-	
-
 }

@@ -187,6 +187,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				/*-------------------------------------------------------------------------------------*/
 				
 				Meteore meteore = new Meteore(coordonnees, id, masse, nom, annee, positionMeteore);
+			
 				if(coordonneesX != -9999 && coordonneesY != -9999 && masse != 0)
 				{
 					hashMeteores.ajouter(meteore, position);
