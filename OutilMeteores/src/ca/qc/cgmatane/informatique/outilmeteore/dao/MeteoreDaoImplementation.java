@@ -79,7 +79,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 			NodeList noeudListeMeteore = docListeMeteore.getElementsByTagName("row");
 			
 			//for(int position = 0; position < noeudListeMeteore.getLength(); position++)
-			for(int position = 0; position < 1000; position++)
+			for(int position = 0; position < 100; position++)
 			{
 				Node noeudMeteore = noeudListeMeteore.item(position);
 				Element elementMeteore = (Element)noeudMeteore;
@@ -102,8 +102,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				else
 				{
 					positionMeteore = "Inconnue";
-				}	
-				
+				}					
 				
 				/*Node noeudId = elementMeteore.getElementsByTagName("id").item(0);
 				Element elementId = (Element)noeudId;
@@ -162,34 +161,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				
 				/*--- Ajustement coordonnees par rapport a l'image---*/
 				float[] coordonnees = {0,0};
-				/*coordonnees[0] = coordonneesX;
-				coordonnees[1] = coordonneesY;*/
-				
-				/*float a = coordonneesY;
-				float b = (float) Math.tan(coordonneesX);
-				
-				float minA = -180;
-				float minB = 0;
-				float maxA = 180;
-				float maxB = 90;
-				
-				float h = 591;
-				float w = 500;
-				
-				float s_a = w /(maxA - minA);
-				float o_a = -w * minA / (maxA - minA);
-				float s_b = -h / (maxB - minB);
-				float o_b = h * maxB / (maxB - minB);
-				
-				float x = s_a * a + o_a;
-				float y = s_b * b + o_b;
-				
-				coordonnees[0] = x;
-				coordonnees[1] = y;
-				
-				/*coordonnees[0] = 200;
-				coordonnees[1] = 200;*/
-				
+								
 				coordonnees[0] = 295 + ((coordonneesY * 295)/180);
 				coordonnees[1] = 250 - ((coordonneesX * 250)/180);
 				
