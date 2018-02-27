@@ -118,9 +118,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				else 
 				{
 					annee = "Inconnue";
-				}
-				
-				
+				}			
 				
 				float masse;
 				Node noeudMasse = elementMeteore.getElementsByTagName("mass").item(0);
@@ -219,22 +217,5 @@ public class MeteoreDaoImplementation implements MeteoresDao
 		
 		return hashMeteores;
 	}	
-
-	@Override
-	public Meteore getMeteore() {
-		return null;
-	}
-
-	@Override
-	public void miseAJourMeteores(Meteore meteore) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void supprimerMeteore(Meteore meteore) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

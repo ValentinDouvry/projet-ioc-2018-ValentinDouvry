@@ -8,9 +8,7 @@ import ca.qc.cgmatane.informatique.outilmeteore.modele.Meteore;
 public interface MeteoresDao 
 {
 	public HashMeteore recupererTouteLesMeteores();
-	public Meteore getMeteore();
-	public void miseAJourMeteores(Meteore meteore);
-	public void supprimerMeteore(Meteore meteore);
+	
 	
 	
 }
