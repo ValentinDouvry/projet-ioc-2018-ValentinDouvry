@@ -65,7 +65,8 @@ public class VueOutilMeteore extends Application
 		
 		
 		Scene scene = new Scene(racine, 591, 500);
-		//scenePrincipale.getIcons().add(new Image("decoration/icon.png"));
+		scenePrincipale.setTitle("Meteore !");
+		scenePrincipale.getIcons().add(new Image("ca/qc/cgmatane/informatique/outilmeteore/vue/decoration/icon.png"));
 		scene.getStylesheets().add(VueOutilMeteore.class.getResource("decoration/OutilMeteore.css").toExternalForm());
 		scenePrincipale.setScene(scene);
 		scenePrincipale.setResizable(false);
