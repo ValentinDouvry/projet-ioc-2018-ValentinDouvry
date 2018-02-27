@@ -1,10 +1,10 @@
 package ca.qc.cgmatane.informatique.outilmeteore.vue;
-import ca.qc.cgmatane.informatique.outilmeteore.Meteore;
 import java.io.FileNotFoundException;
 
 import org.omg.CORBA.PRIVATE_MEMBER;
 
 import ca.qc.cgmatane.informatique.outilmeteore.action.ControleurOutilMeteores;
+import ca.qc.cgmatane.informatique.outilmeteore.modele.Meteore;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

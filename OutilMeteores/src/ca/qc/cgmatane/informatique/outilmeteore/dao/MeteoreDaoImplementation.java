@@ -27,7 +27,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import ca.qc.cgmatane.informatique.outilmeteore.Meteore;
+import ca.qc.cgmatane.informatique.outilmeteore.modele.Meteore;
 
 public class MeteoreDaoImplementation implements MeteoresDao
 {

@@ -10,9 +10,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import ca.qc.cgmatane.informatique.outilmeteore.Meteore;
 import ca.qc.cgmatane.informatique.outilmeteore.dao.MeteoreDaoImplementation;
 import ca.qc.cgmatane.informatique.outilmeteore.dao.MeteoresDao;
+import ca.qc.cgmatane.informatique.outilmeteore.modele.Meteore;
 
 public class ControleurOutilMeteores 
 {

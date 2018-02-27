@@ -1,4 +1,4 @@
-package ca.qc.cgmatane.informatique.outilmeteore;
+package ca.qc.cgmatane.informatique.outilmeteore.modele;
 
 public class Meteore 
 {
