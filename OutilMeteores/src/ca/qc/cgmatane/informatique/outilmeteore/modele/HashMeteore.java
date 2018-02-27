@@ -8,7 +8,7 @@ public class HashMeteore
 	public HashMeteore()
 	{
 		taille = 0;
-		tableauMeteore = new Meteore[10000];
+		tableauMeteore = new Meteore[1000];
 	}
 	
 	public int getTaille() {

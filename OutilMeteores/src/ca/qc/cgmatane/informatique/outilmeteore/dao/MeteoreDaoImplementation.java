@@ -78,8 +78,8 @@ public class MeteoreDaoImplementation implements MeteoresDao
 			Document docListeMeteore = parseur.parse(new ByteArrayInputStream(xmlMeteores.getBytes()));			
 			NodeList noeudListeMeteore = docListeMeteore.getElementsByTagName("row");
 			
-			
-			for(int position = 0; position < noeudListeMeteore.getLength(); position++)
+			//for(int position = 0; position < noeudListeMeteore.getLength(); position++)
+			for(int position = 0; position < 1000; position++)
 			{
 				Node noeudMeteore = noeudListeMeteore.item(position);
 				Element elementMeteore = (Element)noeudMeteore;
@@ -165,7 +165,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				/*coordonnees[0] = coordonneesX;
 				coordonnees[1] = coordonneesY;*/
 				
-				float a = coordonneesY;
+				/*float a = coordonneesY;
 				float b = (float) Math.tan(coordonneesX);
 				
 				float minA = -180;
@@ -186,6 +186,14 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				
 				coordonnees[0] = x;
 				coordonnees[1] = y;
+				
+				/*coordonnees[0] = 200;
+				coordonnees[1] = 200;*/
+				
+				coordonnees[0] = 295 + ((coordonneesY * 295)/180);
+				coordonnees[1] = 250 - ((coordonneesX * 250)/180);
+				
+				
 				/*-------------------------------------------------------------------------------------*/
 				/*Creation meteores et ajout au Hash*/
 				Meteore meteore = new Meteore(coordonnees, id, masse, nom, annee, positionMeteore);

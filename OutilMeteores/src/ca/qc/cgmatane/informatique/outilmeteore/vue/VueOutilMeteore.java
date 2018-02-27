@@ -56,6 +56,7 @@ public class VueOutilMeteore extends Application
 		affichageDetails.getChildren().add(texteDetailsMeteore);
 		Scene sceneDetailsMeteore = new Scene(affichageDetails,300,300);
 		this.fenetreDetailsMeteore = new Stage();
+		fenetreDetailsMeteore.getIcons().add(new Image("ca/qc/cgmatane/informatique/outilmeteore/vue/decoration/icon_details.png"));
 		fenetreDetailsMeteore.setResizable(false);
 		fenetreDetailsMeteore.setTitle("Details");
 		fenetreDetailsMeteore.setScene(sceneDetailsMeteore);
@@ -110,11 +111,9 @@ public class VueOutilMeteore extends Application
 	}	
 	
 	public void afficherDetailsMeteore(Meteore meteore)
-	{
-		
+	{		
 		this.texteDetailsMeteore.setText(meteore.getDescription());
-		fenetreDetailsMeteore.show();
-		
+		fenetreDetailsMeteore.show();	
 	}
 	
 	

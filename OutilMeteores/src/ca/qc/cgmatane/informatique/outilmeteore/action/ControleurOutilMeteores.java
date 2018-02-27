@@ -43,9 +43,6 @@ public class ControleurOutilMeteores
 	
 	public void clicMeteore(int id)
 	{
-		/*Test si besoin id-1*/
-		//vue.afficherDetailsMeteore(mapMeteore.get(id-1));
-		
 		vue.afficherDetailsMeteore(mapMeteore.get(id));
 		compteurMeteoreClique++;
 		if(compteurMeteoreClique == 3)
