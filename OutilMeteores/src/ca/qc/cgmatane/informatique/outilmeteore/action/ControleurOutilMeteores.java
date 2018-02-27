@@ -1,8 +1,6 @@
 package ca.qc.cgmatane.informatique.outilmeteore.action;
 
 import ca.qc.cgmatane.informatique.outilmeteore.vue.VueOutilMeteore;
-import dao.MeteoreDaoImplementation;
-import dao.MeteoresDao;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -13,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 import ca.qc.cgmatane.informatique.outilmeteore.Meteore;
+import ca.qc.cgmatane.informatique.outilmeteore.dao.MeteoreDaoImplementation;
+import ca.qc.cgmatane.informatique.outilmeteore.dao.MeteoresDao;
 
 public class ControleurOutilMeteores 
 {

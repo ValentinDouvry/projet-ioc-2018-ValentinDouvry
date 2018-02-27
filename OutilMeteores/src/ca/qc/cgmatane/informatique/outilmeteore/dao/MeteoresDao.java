@@ -1,4 +1,4 @@
-package dao;
+package ca.qc.cgmatane.informatique.outilmeteore.dao;
 import java.util.List;
 import java.util.Map;
 

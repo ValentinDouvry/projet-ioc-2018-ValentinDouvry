@@ -1,4 +1,4 @@
-package dao;
+package ca.qc.cgmatane.informatique.outilmeteore.dao;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;

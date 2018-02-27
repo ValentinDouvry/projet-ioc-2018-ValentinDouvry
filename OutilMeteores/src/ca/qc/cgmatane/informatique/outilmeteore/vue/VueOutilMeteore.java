@@ -91,7 +91,7 @@ public class VueOutilMeteore extends Application
 		Circle marqueurMeteore = new Circle();
 		marqueurMeteore.setCenterX(coordonneeX);
 		marqueurMeteore.setCenterY(coordonneeY);		
-		marqueurMeteore.setRadius(3.5f);
+		marqueurMeteore.setRadius(3.8f);
 		marqueurMeteore.setId(Integer.toString(id));
 		marqueurMeteore.setFill(Color.RED);
 		marqueurMeteore.setOnMouseClicked(new EventHandler<MouseEvent>() 
