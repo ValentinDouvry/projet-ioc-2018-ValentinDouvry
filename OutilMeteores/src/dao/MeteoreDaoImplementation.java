@@ -13,8 +13,8 @@ import java.io.StringBufferInputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -31,17 +31,18 @@ import ca.qc.cgmatane.informatique.outilmeteore.Meteore;
 
 public class MeteoreDaoImplementation implements MeteoresDao
 {
-	protected List<Meteore> listeMeteores;
+	protected int id;
+	protected Map<Integer,Meteore> hashMapMeteores;
 
 	
 	public MeteoreDaoImplementation() 
 	{
-		listeMeteores = new ArrayList<Meteore>();		
+		hashMapMeteores = new HashMap<Integer,Meteore>();		
 	}
 	
 	
 	@Override
-	public List<Meteore> recupererTouteLesMeteores() 
+	public Map<Integer,Meteore> recupererTouteLesMeteores() 
 	{
 		String xmlMeteores = "";
 		URL urlDataNasa;
@@ -60,7 +61,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 		//System.out.println(xmlMeteores);
 		try 
 		{
-			int id = 0;
+			id = 0;
 			
 			/*--- Test depuis fichier XML sur le disque ---*/
 			/*File file = new File("c:\\file-utf.xml");
@@ -189,7 +190,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				Meteore meteore = new Meteore(coordonnees, id, masse, nom, annee, positionMeteore);
 				if(coordonneesX != -9999 && coordonneesY != -9999 && masse != 0)
 				{
-					listeMeteores.add(meteore);
+					hashMapMeteores.put(id, meteore);
 					id++;
 				}					
 			
@@ -215,7 +216,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 			e.printStackTrace();
 		}	
 		
-		return listeMeteores;
+		return hashMapMeteores;
 	}	
 
 	@Override

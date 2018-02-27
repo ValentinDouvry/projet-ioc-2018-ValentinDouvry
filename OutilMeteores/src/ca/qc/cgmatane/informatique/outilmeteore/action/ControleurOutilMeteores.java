@@ -10,37 +10,29 @@ import javafx.scene.layout.StackPane;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import ca.qc.cgmatane.informatique.outilmeteore.Meteore;
 
 public class ControleurOutilMeteores 
 {
 	protected VueOutilMeteore vue;
-	
-	public List<Meteore> listeMeteore;
 	protected int compteurMeteoreClique;
 	protected MeteoreDaoImplementation meteoreDaoImplementation;
-	
+	protected Map<Integer, Meteore> mapMeteore;
 	
 	public ControleurOutilMeteores(VueOutilMeteore vue)
 	{
 		this.vue = vue;
 		meteoreDaoImplementation = new MeteoreDaoImplementation();		
+		mapMeteore = meteoreDaoImplementation.recupererTouteLesMeteores();
 		
-		for (Meteore meteore : meteoreDaoImplementation.recupererTouteLesMeteores())
+		for(int compteur = 0; compteur < mapMeteore.size(); compteur++) 
 		{
-			vue.afficherMarqueurMeteore(meteore.getId(),meteore.getCoordonnees());			
+			vue.afficherMarqueurMeteore(mapMeteore.get(compteur).getId(), mapMeteore.get(compteur).getCoordonnees());
 		}
 		
-		compteurMeteoreClique = 0;
-		
-		/*Iterator<Meteore> visiteurMeteore = listeMeteore.iterator();
-		while(visiteurMeteore.hasNext())
-		{
-			Meteore meteoreTest = visiteurMeteore.next();
-			vue.afficherMarqueurMeteore(meteoreTest.getId(),meteoreTest.getCoordonnees());
-			
-		}*/		
+		compteurMeteoreClique = 0;	
 	}
 	
 	public void clicMeteore(int id)
