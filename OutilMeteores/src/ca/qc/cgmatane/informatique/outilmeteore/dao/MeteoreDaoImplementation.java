@@ -192,7 +192,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 			
 				if(coordonneesX != -9999 && coordonneesY != -9999 && masse != 0)
 				{
-					hashMeteores.ajouter(meteore, position);
+					hashMeteores.ajouter(meteore, id);
 					id++;
 				}
 			

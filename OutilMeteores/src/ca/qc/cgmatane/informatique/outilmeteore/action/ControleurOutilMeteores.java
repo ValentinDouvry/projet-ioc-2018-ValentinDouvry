@@ -28,12 +28,13 @@ public class ControleurOutilMeteores
 		meteoreDaoImplementation = new MeteoreDaoImplementation();		
 		mapMeteore = meteoreDaoImplementation.recupererTouteLesMeteores();
 		
-		for(int compteur = 0; compteur <= mapMeteore.getTaille(); compteur++) 
+		for(int compteur = 0; compteur < mapMeteore.getTaille(); compteur++) 
 		{
 			if(mapMeteore.get(compteur) != null)
 			{
 				vue.afficherMarqueurMeteore(mapMeteore.get(compteur).getId(), mapMeteore.get(compteur).getCoordonnees());				
 			}
+			
 			
 		}
 		
@@ -42,8 +43,10 @@ public class ControleurOutilMeteores
 	
 	public void clicMeteore(int id)
 	{
+		/*Test si besoin id-1*/
+		//vue.afficherDetailsMeteore(mapMeteore.get(id-1));
 		
-		vue.afficherDetailsMeteore(meteoreDaoImplementation.recupererTouteLesMeteores().get(id));
+		vue.afficherDetailsMeteore(mapMeteore.get(id));
 		compteurMeteoreClique++;
 		if(compteurMeteoreClique == 3)
 		{
