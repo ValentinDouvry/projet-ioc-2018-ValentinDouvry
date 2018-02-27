@@ -12,6 +12,7 @@ import java.util.Map;
 
 import ca.qc.cgmatane.informatique.outilmeteore.dao.MeteoreDaoImplementation;
 import ca.qc.cgmatane.informatique.outilmeteore.dao.MeteoresDao;
+import ca.qc.cgmatane.informatique.outilmeteore.modele.HashMeteore;
 import ca.qc.cgmatane.informatique.outilmeteore.modele.Meteore;
 
 public class ControleurOutilMeteores 
@@ -19,7 +20,7 @@ public class ControleurOutilMeteores
 	protected VueOutilMeteore vue;
 	protected int compteurMeteoreClique;
 	protected MeteoreDaoImplementation meteoreDaoImplementation;
-	protected Map<Integer, Meteore> mapMeteore;
+	protected HashMeteore mapMeteore;
 	
 	public ControleurOutilMeteores(VueOutilMeteore vue)
 	{
@@ -27,9 +28,13 @@ public class ControleurOutilMeteores
 		meteoreDaoImplementation = new MeteoreDaoImplementation();		
 		mapMeteore = meteoreDaoImplementation.recupererTouteLesMeteores();
 		
-		for(int compteur = 0; compteur < mapMeteore.size(); compteur++) 
+		for(int compteur = 0; compteur <= mapMeteore.getTaille(); compteur++) 
 		{
-			vue.afficherMarqueurMeteore(mapMeteore.get(compteur).getId(), mapMeteore.get(compteur).getCoordonnees());
+			if(mapMeteore.get(compteur) != null)
+			{
+				vue.afficherMarqueurMeteore(mapMeteore.get(compteur).getId(), mapMeteore.get(compteur).getCoordonnees());				
+			}
+			
 		}
 		
 		compteurMeteoreClique = 0;	
@@ -38,7 +43,7 @@ public class ControleurOutilMeteores
 	public void clicMeteore(int id)
 	{
 		
-		vue.afficherDetailsMeteore(meteoreDaoImplementation.recupererTouteLesMeteores().get(id-1));
+		vue.afficherDetailsMeteore(meteoreDaoImplementation.recupererTouteLesMeteores().get(id));
 		compteurMeteoreClique++;
 		if(compteurMeteoreClique == 3)
 		{

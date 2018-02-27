@@ -8,8 +8,7 @@ public class Meteore
 	private float masse;
 	private String nom = "";
 	private String annee;
-	private String positionMeteore;
-	
+	private String positionMeteore;	
 	
 	public Meteore(float[] coordonnees, int id, float masse, String nom,String annee, String positionMeteore)
 	{

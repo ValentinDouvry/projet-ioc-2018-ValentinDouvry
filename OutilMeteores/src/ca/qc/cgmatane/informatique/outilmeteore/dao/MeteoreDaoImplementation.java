@@ -27,22 +27,23 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import ca.qc.cgmatane.informatique.outilmeteore.modele.HashMeteore;
 import ca.qc.cgmatane.informatique.outilmeteore.modele.Meteore;
 
 public class MeteoreDaoImplementation implements MeteoresDao
 {
 	protected int id;
-	protected Map<Integer,Meteore> hashMapMeteores;
+	protected HashMeteore hashMeteores;
 
 	
 	public MeteoreDaoImplementation() 
 	{
-		hashMapMeteores = new HashMap<Integer,Meteore>();		
+		hashMeteores = new HashMeteore();		
 	}
 	
 	
 	@Override
-	public Map<Integer,Meteore> recupererTouteLesMeteores() 
+	public HashMeteore recupererTouteLesMeteores() 
 	{
 		String xmlMeteores = "";
 		URL urlDataNasa;
@@ -190,9 +191,9 @@ public class MeteoreDaoImplementation implements MeteoresDao
 				Meteore meteore = new Meteore(coordonnees, id, masse, nom, annee, positionMeteore);
 				if(coordonneesX != -9999 && coordonneesY != -9999 && masse != 0)
 				{
-					hashMapMeteores.put(id, meteore);
+					hashMeteores.ajouter(meteore, position);
 					id++;
-				}					
+				}
 			
 			}
 		}
@@ -216,7 +217,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 			e.printStackTrace();
 		}	
 		
-		return hashMapMeteores;
+		return hashMeteores;
 	}	
 
 	@Override
