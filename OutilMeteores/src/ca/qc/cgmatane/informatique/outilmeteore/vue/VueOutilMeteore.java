@@ -30,9 +30,9 @@ public class VueOutilMeteore extends Application
 
 	protected ControleurOutilMeteores controleur;
 	//protected Image marqueurMeteore;
-	protected Circle marqueurMeteoreTest1;
+	/*protected Circle marqueurMeteoreTest1;
 	protected Circle marqueurMeteoreTest2;
-	protected Circle marqueurMeteoreTest3;
+	protected Circle marqueurMeteoreTest3;*/
 	protected StackPane racine;
 	protected Stage fenetreDetailsMeteore;
 	protected Pane panneauMeteore;
