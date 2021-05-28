@@ -34,11 +34,19 @@ public class MeteoreDaoImplementation implements MeteoresDao
 {
 	protected int id;
 	protected HashMeteore hashMeteores;
+	private static MeteoreDaoImplementation INSTANCE = null;
 
 	
-	public MeteoreDaoImplementation() 
+	private MeteoreDaoImplementation() 
 	{
 		hashMeteores = new HashMeteore();		
+	}
+	
+	public static MeteoreDaoImplementation getInstance() {
+		if(INSTANCE == null) {
+			INSTANCE = new MeteoreDaoImplementation();
+		}
+		return INSTANCE;
 	}
 	
 	
@@ -79,7 +87,7 @@ public class MeteoreDaoImplementation implements MeteoresDao
 			NodeList noeudListeMeteore = docListeMeteore.getElementsByTagName("row");
 			
 			//for(int position = 0; position < noeudListeMeteore.getLength(); position++)
-			for(int position = 0; position < 100; position++)
+			for(int position = 0; position < 200; position++)
 			{
 				Node noeudMeteore = noeudListeMeteore.item(position);
 				Element elementMeteore = (Element)noeudMeteore;
