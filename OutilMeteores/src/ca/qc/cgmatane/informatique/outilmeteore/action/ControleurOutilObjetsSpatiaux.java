@@ -20,13 +20,21 @@ public class ControleurOutilObjetsSpatiaux {
 	protected VueOutilObjetsSpatiaux vue;
 	protected ObjetsSpatiauxDaoImplementation objetsSpatiauxDaoImplementation;
 	protected HashObjetsSpatiaux hashObjetsSpatiaux;
+	private static ControleurOutilObjetsSpatiaux INSTANCE = null;
 	
-	public ControleurOutilObjetsSpatiaux(VueOutilObjetsSpatiaux vue) {
+	private ControleurOutilObjetsSpatiaux(VueOutilObjetsSpatiaux vue) {
 		this.vue = vue;
 		objetsSpatiauxDaoImplementation = ObjetsSpatiauxDaoImplementation.getInstance(this);		
 		hashObjetsSpatiaux = objetsSpatiauxDaoImplementation.recupererTouteLesMeteores();
 		
 		this.afficherObjetsSpatiaux();
+	}
+	
+	public static ControleurOutilObjetsSpatiaux getInstance(VueOutilObjetsSpatiaux vue) {
+		if(INSTANCE == null) {
+			INSTANCE = new ControleurOutilObjetsSpatiaux(vue);
+		}
+		return INSTANCE;
 	}
 	
 	private void afficherObjetsSpatiaux() {

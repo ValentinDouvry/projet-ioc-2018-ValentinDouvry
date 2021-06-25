@@ -95,7 +95,7 @@ public class VueOutilObjetsSpatiaux extends Application {
 		
 		
 		scenePrincipale.show();
-		this.controleur = new ControleurOutilObjetsSpatiaux(this);
+		this.controleur = ControleurOutilObjetsSpatiaux.getInstance(this);
 	}	
 
 	private void creerFenetreDetails() {
