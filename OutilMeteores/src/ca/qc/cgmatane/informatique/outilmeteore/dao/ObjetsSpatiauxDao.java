@@ -2,13 +2,9 @@ package ca.qc.cgmatane.informatique.outilmeteore.dao;
 import java.util.List;
 import java.util.Map;
 
-import ca.qc.cgmatane.informatique.outilmeteore.modele.HashMeteore;
-import ca.qc.cgmatane.informatique.outilmeteore.modele.Meteore;
+import ca.qc.cgmatane.informatique.outilmeteore.modele.HashObjetsSpatiaux;
+import ca.qc.cgmatane.informatique.outilmeteore.modele.ObjetSpacial;
 
-public interface MeteoresDao 
-{
-	public HashMeteore recupererTouteLesMeteores();
-	
-	
-	
+public interface ObjetsSpatiauxDao {
+	public HashObjetsSpatiaux recupererToutLesObjetsSpatiaux();
 }
