@@ -1,82 +1,57 @@
 package ca.qc.cgmatane.informatique.outilmeteore.modele;
 
-public class Meteore extends ObjetSpacial{
+public class Meteore 
+{
 	private float[] coordonnees;
 	private int id;
 	private String description;
 	private float masse;
 	private String nom = "";
 	private String annee;
-	private String position;
+	private String positionMeteore;	
 	
-	
-	public Meteore(float[] coordonnees, int id, float masse, String nom,String annee, String position) {
+	public Meteore(float[] coordonnees, int id, float masse, String nom,String annee, String positionMeteore)
+	{
 		this.coordonnees = coordonnees;
 		this.id = id;
 		this.masse = masse;
 		this.nom = nom;
-		this.description = ("Nom : " + nom  + " \nMasse : " + masse + " kg" + "\nDate : " + annee + "\nCoordonnees :  " + position);
+		this.description = ("Nom : " + nom  + " \nMasse : " + masse + "g" + "\nDate : " + annee + "\nCoordonnees :  " + positionMeteore );
 				
 	}
-
-
-	@Override
+	
 	public float[] getCoordonnees() {
-		return this.coordonnees;
+		return coordonnees;
 	}
-
-	@Override
 	public void setCoordonnees(float[] coordonnees) {
 		this.coordonnees = coordonnees;
-		
 	}
-
-
-	@Override
 	public int getId() {
-		return this.id;
+		return id;
 	}
-
-
-	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
-	@Override
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
-
-
-	@Override
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
-	@Override
 	public float getMasse() {
-		return this.masse;
+		return masse;
 	}
 
-
-	@Override
 	public void setMasse(float masse) {
-		this.masse = masse;		
+		this.masse = masse;
 	}
 
-
-	@Override
 	public String getNom() {
-		return this.nom;
+		return nom;
 	}
 
-
-	@Override
 	public void setNom(String nom) {
-		this.nom = nom;		
+		this.nom = nom;
 	}
-
 }

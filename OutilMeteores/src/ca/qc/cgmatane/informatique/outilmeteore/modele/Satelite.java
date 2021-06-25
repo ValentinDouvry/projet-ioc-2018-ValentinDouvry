@@ -1,6 +1,6 @@
 package ca.qc.cgmatane.informatique.outilmeteore.modele;
 
-public class Meteore extends ObjetSpacial{
+public class Satelite extends ObjetSpacial{
 	private float[] coordonnees;
 	private int id;
 	private String description;
@@ -10,7 +10,7 @@ public class Meteore extends ObjetSpacial{
 	private String position;
 	
 	
-	public Meteore(float[] coordonnees, int id, float masse, String nom,String annee, String position) {
+	public Satelite(float[] coordonnees, int id, float masse, String nom,String annee, String position) {
 		this.coordonnees = coordonnees;
 		this.id = id;
 		this.masse = masse;
@@ -18,7 +18,6 @@ public class Meteore extends ObjetSpacial{
 		this.description = ("Nom : " + nom  + " \nMasse : " + masse + " kg" + "\nDate : " + annee + "\nCoordonnees :  " + position);
 				
 	}
-
 
 	@Override
 	public float[] getCoordonnees() {
@@ -28,51 +27,42 @@ public class Meteore extends ObjetSpacial{
 	@Override
 	public void setCoordonnees(float[] coordonnees) {
 		this.coordonnees = coordonnees;
-		
 	}
-
 
 	@Override
 	public int getId() {
 		return this.id;
 	}
 
-
 	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	@Override
 	public String getDescription() {
 		return this.description;
 	}
 
-
 	@Override
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 	@Override
 	public float getMasse() {
 		return this.masse;
 	}
 
-
 	@Override
 	public void setMasse(float masse) {
 		this.masse = masse;		
 	}
 
-
 	@Override
 	public String getNom() {
 		return this.nom;
 	}
-
 
 	@Override
 	public void setNom(String nom) {

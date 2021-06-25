@@ -1,8 +1,12 @@
 .root
 {
 	-fx-background-image: url("fondTerreDetails.jpg");
-	
-	
+	-fx-font-family: 'verdana';
+	-fx-font-weight: bold;
+}
+
+.label {
+	-fx-text-fill: yellow;
 }
 
 
