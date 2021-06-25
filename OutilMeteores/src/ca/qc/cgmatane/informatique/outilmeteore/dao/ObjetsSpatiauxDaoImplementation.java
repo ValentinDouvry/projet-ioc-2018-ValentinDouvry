@@ -29,7 +29,7 @@ import org.xml.sax.SAXException;
 
 import ca.qc.cgmatane.informatique.outilmeteore.action.ControleurOutilObjetsSpatiaux;
 import ca.qc.cgmatane.informatique.outilmeteore.modele.HashObjetsSpatiaux;
-import ca.qc.cgmatane.informatique.outilmeteore.modele.ObjetSpacial;
+import ca.qc.cgmatane.informatique.outilmeteore.modele.ObjetSpatial;
 import ca.qc.cgmatane.informatique.outilmeteore.modele.ObjetSpatialFactory;
 
 public class ObjetsSpatiauxDaoImplementation implements ObjetsSpatiauxDao {
@@ -53,7 +53,7 @@ public class ObjetsSpatiauxDaoImplementation implements ObjetsSpatiauxDao {
 	
 	@Override
 	public HashObjetsSpatiaux recupererToutLesObjetsSpatiaux() {
-		// recupererAutresObjetSpacial();
+		// recupererAutresObjetSpatiaux(); (satelites) TODO
 		return this.recupererTouteLesMeteores();
 	}
 	
@@ -141,7 +141,7 @@ public class ObjetsSpatiauxDaoImplementation implements ObjetsSpatiauxDao {
 				if(elementCoordonneesX != null && elementCoordonneesY != null) {
 					coordonneesX = Float.parseFloat(elementCoordonneesX.getTextContent());
 					coordonneesY = Float.parseFloat(elementCoordonneesY.getTextContent());
-					positionMeteore = "(" + elementCoordonneesX.getTextContent() + ", " + elementCoordonneesY.getTextContent() + ")";
+					positionMeteore = elementCoordonneesX.getTextContent() + ", " + elementCoordonneesY.getTextContent();
 				}
 				else {
 					coordonneesX = -9999;
@@ -158,7 +158,7 @@ public class ObjetsSpatiauxDaoImplementation implements ObjetsSpatiauxDao {
 				
 				if(coordonneesX != -9999 && coordonneesY != -9999 && masse != 0) {
 					/*Creation meteores et ajout au Hash*/
-					ObjetSpacial meteore = ObjetSpatialFactory.getObjetSpacial("Meteore",coordonnees, id, masse, nom, annee, positionMeteore);
+					ObjetSpatial meteore = ObjetSpatialFactory.getObjetSpatial("Meteore",coordonnees, id, masse, nom, annee, positionMeteore, false);
 					hashObjetsSpatiaux.ajouter(meteore, id);
 					id++;
 				}

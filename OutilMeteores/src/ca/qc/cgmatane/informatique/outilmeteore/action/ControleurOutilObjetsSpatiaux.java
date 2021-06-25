@@ -13,7 +13,7 @@ import java.util.Map;
 import ca.qc.cgmatane.informatique.outilmeteore.dao.ObjetsSpatiauxDaoImplementation;
 import ca.qc.cgmatane.informatique.outilmeteore.dao.ObjetsSpatiauxDao;
 import ca.qc.cgmatane.informatique.outilmeteore.modele.HashObjetsSpatiaux;
-import ca.qc.cgmatane.informatique.outilmeteore.modele.ObjetSpacial;
+import ca.qc.cgmatane.informatique.outilmeteore.modele.ObjetSpatial;
 import ca.qc.cgmatane.informatique.outilmeteore.modele.ObjetSpatialFactory;
 
 public class ControleurOutilObjetsSpatiaux {
@@ -26,13 +26,16 @@ public class ControleurOutilObjetsSpatiaux {
 		objetsSpatiauxDaoImplementation = ObjetsSpatiauxDaoImplementation.getInstance(this);		
 		hashObjetsSpatiaux = objetsSpatiauxDaoImplementation.recupererTouteLesMeteores();
 		
+		this.afficherObjetsSpatiaux();
+	}
+	
+	private void afficherObjetsSpatiaux() {
 		for (int compteur = 0; compteur < hashObjetsSpatiaux.getTaille(); compteur++) {
 			if(hashObjetsSpatiaux.getObjetSpatial(compteur) != null) {
-				vue.afficherMarqueur(hashObjetsSpatiaux.getObjetSpatial(compteur).getId(), hashObjetsSpatiaux.getObjetSpatial(compteur).getCoordonnees(), false);				
+				this.vue.afficherMarqueur(hashObjetsSpatiaux.getObjetSpatial(compteur), hashObjetsSpatiaux.getObjetSpatial(compteur).getCoordonnees());				
 			}
 		}
 	}
-	
 	public void clicObjetSpatial(int id) {
 		vue.afficherDetails(hashObjetsSpatiaux.getObjetSpatial(id));
 	}
@@ -55,11 +58,11 @@ public class ControleurOutilObjetsSpatiaux {
 				coordonnees[0] =  (int) ((1200/360.0) * (180 + coordonneesY)); // LONG
 				coordonnees[1] =  (int) ((600/180.0) * (90 - coordonneesX)); // LAT
 				
-				String positionMeteore = "(" + coordonneesX + ", " + coordonneesY + ")";
+				String positionMeteore = coordonneesX + ", " + coordonneesY;
 				
-				ObjetSpacial meteore = ObjetSpatialFactory.getObjetSpacial("Meteore", coordonnees, id, masse, champNom, champAnnee, positionMeteore);
+				ObjetSpatial meteore = ObjetSpatialFactory.getObjetSpatial("Meteore", coordonnees, id, masse, champNom, champAnnee, positionMeteore, true);
 				this.hashObjetsSpatiaux.ajouter(meteore, id);				
-				this.vue.afficherMarqueur(hashObjetsSpatiaux.getObjetSpatial(id).getId(), hashObjetsSpatiaux.getObjetSpatial(id).getCoordonnees(), true);
+				this.vue.afficherMarqueur(hashObjetsSpatiaux.getObjetSpatial(id), hashObjetsSpatiaux.getObjetSpatial(id).getCoordonnees());
 			} catch (Exception e) {
 				this.afficherAlerte("Les coordonnées et la masse doivent être des chiffres !");
 				return false;
@@ -72,7 +75,40 @@ public class ControleurOutilObjetsSpatiaux {
 		this.vue.afficherAlerte(texte);
 	}
 	
+	public void supprimerObjetSpatial(int id) {
+		this.hashObjetsSpatiaux.supprimerObjetSpacial(id);
+		this.vue.afficherAlerte("Pas encore implémenté !");
+		/*this.vue.nettoyerPanneauMarqueur();
+		this.afficherObjetsSpatiaux();*/
+		
+	}
 	
-	
-	
+	public boolean modifierObjetSpatial(int id, String champNom, String champLong, String champLat, String champMasse, String champAnnee) {
+		if (champNom.isEmpty() || champLong.isEmpty() || champLat.isEmpty() || champMasse.isEmpty() || champAnnee.isEmpty()) {
+			this.afficherAlerte("Veuillez remplir les champs !");
+			return false;
+		} else {
+			try {
+				float coordonneesX = Float.parseFloat(champLat);
+				float coordonneesY = Float.parseFloat(champLong);
+				
+				float masse = Float.parseFloat(champMasse);
+				
+				/*--- Ajustement coordonnees par rapport a l'image---*/
+				float[] coordonnees = {0,0};
+				coordonnees[0] =  (int) ((1200/360.0) * (180 + coordonneesY)); // LONG
+				coordonnees[1] =  (int) ((600/180.0) * (90 - coordonneesX)); // LAT
+				
+				String position = coordonneesX + ", " + coordonneesY;
+			
+				this.hashObjetsSpatiaux.modifierObjetSpatial(id, coordonnees, champNom, masse, champAnnee, position);
+				this.vue.nettoyerPanneauMarqueur();
+				this.afficherObjetsSpatiaux();
+			} catch (Exception e) {
+				this.afficherAlerte("Les coordonnées et la masse doivent être des chiffres !");
+				return false;
+			}
+		}
+		return true;
+	}	
 }
